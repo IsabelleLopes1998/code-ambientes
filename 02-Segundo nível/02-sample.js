@@ -1,9 +1,10 @@
 function verificarSePodeDirigir(idade) {
-    if (idade >= 18) {
+    const maiorIdade = 18;
+    if (idade >= maiorIdade) {
         return "Pode dirigir";
     } else {
         return "Não pode dirigir";
     }
 }
-
-console.log(verificarSePodeDirigir(16));
+const idadeDoMotorista = 16;
+console.log(verificarSePodeDirigir(idadeDoMotorista));
