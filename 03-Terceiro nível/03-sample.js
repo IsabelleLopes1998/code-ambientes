@@ -11,15 +11,21 @@ async function buscarEDetalharPlaneta(idPlaneta) {
 
         console.log("Detalhes do Planeta:");
         console.log(detalhesPlaneta);
+
         const populacaoTotal = 100000;
         const populacao = parseInt(planeta.population);
-        if (populacao > populacaoTotal) {
-            console.log("Este planeta é muito populado.");
-        } else {
-            console.log("Este planeta tem uma população pequena.");
-        }
+
+        verificarPopulacao(populacao, populacaoTotal);
+        
     } catch (erro) {
         console.error("Erro ao buscar o planeta:", erro);
+    }
+}
+function verificarPopulacao(populacao, populacaoTotal) {
+    if (populacao > populacaoTotal) {
+        console.log("Este planeta é muito populado.");
+    } else {
+        console.log("Este planeta tem uma população pequena.");
     }
 }
 
