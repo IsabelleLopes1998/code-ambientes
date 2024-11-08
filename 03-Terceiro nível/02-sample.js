@@ -10,7 +10,7 @@ async function buscarEFiltrarPessoas() {
             console.log(pessoa.name);
         });
 
-        console.log(`Total de pessoas encontradas: ${dados.results.length}`);
+        console.log(`Total de pessoas encontradas: ${pessoasComL.length}`);
 
     } catch (erro) {
         console.error("Erro ao buscar pessoas:", erro);
