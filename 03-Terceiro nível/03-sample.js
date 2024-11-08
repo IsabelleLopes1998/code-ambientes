@@ -16,11 +16,12 @@ async function buscarEDetalharPlaneta(idPlaneta) {
         const populacao = parseInt(planeta.population);
 
         verificarPopulacao(populacao, populacaoTotal);
-        
+
     } catch (erro) {
         console.error("Erro ao buscar o planeta:", erro);
     }
 }
+
 function verificarPopulacao(populacao, populacaoTotal) {
     if (populacao > populacaoTotal) {
         console.log("Este planeta é muito populado.");
