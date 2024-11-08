@@ -11,9 +11,9 @@ async function buscarEDetalharPlaneta(idPlaneta) {
 
         console.log("Detalhes do Planeta:");
         console.log(detalhesPlaneta);
-
+        const populacaoTotal = 100000;
         const populacao = parseInt(planeta.population);
-        if (populacao > 1000000) {
+        if (populacao > populacaoTotal) {
             console.log("Este planeta é muito populado.");
         } else {
             console.log("Este planeta tem uma população pequena.");
