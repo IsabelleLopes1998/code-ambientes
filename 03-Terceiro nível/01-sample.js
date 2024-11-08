@@ -14,14 +14,19 @@ async function buscarEDetalharNave() {
 
         const tamanhoTripulacao = parseInt(nave.crew);
         const tamanhoMaximoDaTripulacao = 1000;
-        if (tamanhoTripulacao > tamanhoMaximoDaTripulacao) {
-            console.log("Esta é uma nave grande.");
-        } else {
-            console.log("Esta é uma nave pequena.");
-        }
+
+        verificarTamanhoNave(tamanhoTripulacao, tamanhoMaximoDaTripulacao);
 
     } catch (erro) {
         console.error("Erro ao buscar detalhes da nave:", erro);
+    }
+}
+
+function verificarTamanhoNave(tamanhoTripulacao, tamanhoMaximoDaTripulacao) {
+    if (tamanhoTripulacao > tamanhoMaximoDaTripulacao) {
+        console.log("Esta é uma nave grande.");
+    } else {
+        console.log("Esta é uma nave pequena.");
     }
 }
 
