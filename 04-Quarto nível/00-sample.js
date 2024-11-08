@@ -1,28 +1,40 @@
 async function buscarPersonagem() {
-    const mensagemDiv = document.getElementById("mensagem");
-    mensagemDiv.innerHTML = "";
-
-    const id = document.getElementById("personagemId").value;
-
-    if (!id || id <= 0) {
+    const id = obterIdPersonagem();
+    
+    if (!validarId(id)) {
         mostrarErro("ID inválido. Insira um número positivo.", "danger");
         return;
     }
 
     try {
-        const resposta = await fetch(`https://swapi.dev/api/people/${id}/`);
-
-        if (!resposta.ok) {
-            throw new Error("Personagem não encontrado. Verifique o ID e tente novamente.");
-        }
-
-        const personagem = await resposta.json();
+        const personagem = await obterDadosPersonagem(id);
         mostrarResultado(personagem);
-
     } catch (erro) {
         mostrarErro(erro.message, "danger");
     }
 }
+
+
+function obterIdPersonagem() {
+    return document.getElementById("personagemId").value;
+}
+
+
+function validarId(id) {
+    return id && id > 0;
+}
+
+
+async function obterDadosPersonagem(id) {
+    const resposta = await fetch(`https://swapi.dev/api/people/${id}/`);
+    
+    if (!resposta.ok) {
+        throw new Error("Personagem não encontrado. Verifique o ID e tente novamente.");
+    }
+    
+    return resposta.json();
+}
+
 
 function mostrarErro(mensagem, tipo) {
     const mensagemDiv = document.getElementById("mensagem");
@@ -38,4 +50,5 @@ function mostrarResultado(personagem) {
         <strong>Peso:</strong> ${personagem.mass} kg
       </div>`;
 }
+
 buscarPersonagem();
