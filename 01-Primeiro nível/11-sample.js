@@ -1,70 +1,70 @@
 class User {
-  constructor(userProfile) {
-    this.name = userProfile.name;
-    this.age = userProfile.age;
-    this.role = userProfile.role;
-    this.creationDate = userProfile.created;
-    this.lastLogin = userProfile.lastLogin;
-    this.isActive = userProfile.active;
-    this.totalLoginAttempts = userProfile.loginAttempts;
-    this.currentLoginAttempts = userProfile.totalLoginAttemptsNumber;
-  }
-
-  isActive() {
-    if (this.isActive) {
-      console.log("Ativo");
-    } else {
-      console.log("Inativo");
+    constructor(userProfile) {
+        this.name = userProfile.name;
+        this.age = userProfile.age;
+        this.role = userProfile.role;
+        this.creationDate = userProfile.created;
+        this.lastLogin = userProfile.lastLogin;
+        this.isActive = userProfile.active;
+        this.totalLoginAttempts = userProfile.loginAttempts;
+        this.currentLoginAttempts = userProfile.totalLoginAttemptsNumber;
     }
-  }
 
-  isAdmin() {
-    if (this.isAdmin === "admin") {
-      console.log("Admin pode acessar todas as áreas.");
-    } else {
-      console.log("Convidado tem acesso limitado.");
+    isActive() {
+        if (this.isActive) {
+            console.log("Ativo");
+        } else {
+            console.log("Inativo");
+        }
     }
-  }
+
+    isAdmin() {
+        if (this.isAdmin === "admin") {
+            console.log("Admin pode acessar todas as áreas.");
+        } else {
+            console.log("Convidado tem acesso limitado.");
+        }
+    }
 }
 
 // Deixe a função clara para que seja possível de compreender que ela verifica o número de usuários com a role de admin
 function numberOfAdmins(users) {
-  let c = 0;
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].c === "admin") {
-      c++;
+    let c = 0;
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].c === "admin") {
+            c++;
+        }
     }
-  }
-  return c;
+    return c;
 }
 
 // Deixe a função clara para que seja possível de compreender 
 // que ela verifica se o número de tentativas de login é excessivo
 function checkLoginAttemptNumber(user, maximumLoginAttempts) {
-  if (user.currentLoginAttempts > maximumLoginAttempts) {
-    console.log("Tentativas de login excessivas.");
-  } else {
-    console.log("Tentativas de login sob controle.");
-  }
+    if (user.currentLoginAttempts > maximumLoginAttempts) {
+        console.log("Tentativas de login excessivas.");
+    } else {
+        console.log("Tentativas de login sob controle.");
+    }
 }
 
 function mostRecentlyLoggedIn(u1, u2) {
-  if (u1.lastLogin > u2.lastLogin) {
-    return `${u1.name} logou mais recentemente.`;
-  } else {
-    return `${u2.name} logou mais recentemente.`;
-  }
+    if (u1.lastLogin > u2.lastLogin) {
+        return `${u1.name} logou mais recentemente.`;
+    } else {
+        return `${u2.name} logou mais recentemente.`;
+    }
 }
 
 // Deixe a função clara para que seja possível de compreender que ela verifica se o usuário foi criado recentemente
 function recentlyCreated(user) {
-  const now = new Date();
-  const maxTime = 31536000000;
-  if (now - user.creationDate < maxTime) {
-    console.log("Usuário criado recentemente.");
-  } else {
-    console.log("Usuário antigo.");
-  }
+    const now = new Date();
+    const maxTime = 31536000000;
+    if (now - user.creationDate < maxTime) {
+        console.log("Usuário criado recentemente.");
+    } else {
+        console.log("Usuário antigo.");
+    }
 }
 
 const yearCreated1 = 2023;
@@ -75,14 +75,14 @@ const monthLastLogin1 = 8;
 const dayLastLogin1 = 1;
 
 const userProfile1 = {
-  name: "Carlos",
-  age: 25,
-  role: "admin",
-  creationDate: new Date(yearCreated1, monthCreated1, dayCreated1),
-  lastLogin: new Date(yearLastLogin1, monthLastLogin1, dayLastLogin1),
-  active: true,
-  totalLoginAttempts: 100,
-  currentLoginAttempts: 2
+    name: "Carlos",
+    age: 25,
+    role: "admin",
+    creationDate: new Date(yearCreated1, monthCreated1, dayCreated1),
+    lastLogin: new Date(yearLastLogin1, monthLastLogin1, dayLastLogin1),
+    active: true,
+    totalLoginAttempts: 100,
+    currentLoginAttempts: 2
 };
 
 const yearCreated2 = 2020;
@@ -93,14 +93,14 @@ const monthLastLogin2 = 7;
 const dayLastLogin2 = 31;
 
 const userProfile2 = {
-  name: "Ana",
-  age: 30,
-  role: "guest",
-  creationDate: new Date(yearCreated2, monthCreated2, dayCreated2),
-  lastLogin: new Date(yearLastLogin2, monthLastLogin2, dayLastLogin2),
-  active: true,
-  totalLoginAttempts: 50,
-  currentLoginAttempts: 3
+    name: "Ana",
+    age: 30,
+    role: "guest",
+    creationDate: new Date(yearCreated2, monthCreated2, dayCreated2),
+    lastLogin: new Date(yearLastLogin2, monthLastLogin2, dayLastLogin2),
+    active: true,
+    totalLoginAttempts: 50,
+    currentLoginAttempts: 3
 };
 
 const yearCreated3 = 2022;
@@ -111,14 +111,14 @@ const monthLastLogin3 = 6;
 const dayLastLogin3 = 10;
 
 const userProfile3 = {
-  name: "José",
-  age: 29,
-  role: "admin",
-  creationDate: new Date(yearCreated3, monthCreated3, dayCreated3),
-  lastLogin: new Date(yearLastLogin3, monthLastLogin3, dayLastLogin3),
-  active: false,
-  totalLoginAttempts: 200,
-  currentLoginAttempts: 5
+    name: "José",
+    age: 29,
+    role: "admin",
+    creationDate: new Date(yearCreated3, monthCreated3, dayCreated3),
+    lastLogin: new Date(yearLastLogin3, monthLastLogin3, dayLastLogin3),
+    active: false,
+    totalLoginAttempts: 200,
+    currentLoginAttempts: 5
 };
 
 
@@ -130,14 +130,14 @@ const monthLastLogin4 = 12;
 const dayLastLogin4 = 25;
 
 const userProfile4 = {
-  name: "Maria",
-  age: 35,
-  role: "guest",
-  creationDate: new Date(yearCreated4, monthCreated4, dayCreated4),
-  lastLogin: new Date(yearLastLogin4, monthLastLogin4, dayLastLogin4),
-  active: false,
-  totalLoginAttempts: 80,
-  currentLoginAttempts: 7
+    name: "Maria",
+    age: 35,
+    role: "guest",
+    creationDate: new Date(yearCreated4, monthCreated4, dayCreated4),
+    lastLogin: new Date(yearLastLogin4, monthLastLogin4, dayLastLogin4),
+    active: false,
+    totalLoginAttempts: 80,
+    currentLoginAttempts: 7
 };
 
 const users = [new User(userProfile1), new User(userProfile2), new User(userProfile3), new User(userProfile4)];
