@@ -13,7 +13,8 @@ async function buscarEDetalharNave() {
         console.log(detalhesNave);
 
         const tamanhoTripulacao = parseInt(nave.crew);
-        if (tamanhoTripulacao > 100) {
+        const tamanhoMaximoDaTripulacao = 1000;
+        if (tamanhoTripulacao > tamanhoMaximoDaTripulacao) {
             console.log("Esta é uma nave grande.");
         } else {
             console.log("Esta é uma nave pequena.");
