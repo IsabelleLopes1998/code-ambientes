@@ -3,26 +3,40 @@ function calcularSalarioFuncionario(horasTrabalhadas, valorHora, cargo) {
 
     let salarioComBonus;
     if (cargo === "gerente") {
-        salarioComBonus = salarioBase + 1000;
+        const bonusGerente = 1000;
+        salarioComBonus = salarioBase + bonusGerente;
     } else if (cargo === "supervisor") {
-        salarioComBonus = salarioBase + 500;
+        const bonusSupervisor = 500;
+        salarioComBonus = salarioBase + bonusSupervisor;
     } else {
-        salarioComBonus = salarioBase + 200;
+        const bonusbase = 200;
+        salarioComBonus = salarioBase + bonusbase;
     }
+    const descontoSalario = 300;
+    const salarioComDesconto = salarioComBonus - descontoSalario;
+    
+    calcularComDecontoDoImposto(salarioComDesconto);   
+}
 
-    const salarioComDesconto = salarioComBonus - 300;
-
+function calcularComDecontoDoImposto(salarioComDesconto){
     let salarioFinal;
-    if (salarioComDesconto > 5000) {
-        salarioFinal = salarioComDesconto - (salarioComDesconto * 0.27);
-    } else if (salarioComDesconto > 3000) {
-        salarioFinal = salarioComDesconto - (salarioComDesconto * 0.18);
+    const salarioMaximo = 5000;
+    const salarioMedio = 3000;
+    const descontoSalarioMaximo = 0.27;
+    const descontoSalarioMedio = 0.18;
+    const descontoSalarioBase = 0.11;
+    if (salarioComDesconto > salarioMaximo) {
+        salarioFinal = salarioComDesconto - (salarioComDesconto * descontoSalarioMaximo);
+    } else if (salarioComDesconto > salarioMedio) {
+        salarioFinal = salarioComDesconto - (salarioComDesconto * descontoSalarioMedio);
     } else {
-        salarioFinal = salarioComDesconto - (salarioComDesconto * 0.11);
+        salarioFinal = salarioComDesconto - (salarioComDesconto * descontoSalarioBase );
     }
 
     return salarioFinal;
 }
 
-const salario = calcularSalarioFuncionario(160, 25, "gerente");
+const horasTrabalhadas = 160;
+const valorDaHoraTrabalhada = 25;
+const salario = calcularSalarioFuncionario(horasTrabalhadas, valorDaHoraTrabalhada, "gerente");
 console.log(`O salário final é: ${salario}`);
