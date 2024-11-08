@@ -1,9 +1,9 @@
-const d1 = "2024-01-01";
-const d2 = "2024-12-31";
+const dataInicial = "2024-01-01";
+const dataFinal = "2024-12-31";
 
-function calcDif(d1, d2) {
-    return new Date(d2) - new Date(d1);
+function calcularDiferencaDeDias(dataInicial, dataFinal) {
+    return new Date(dataFinal) - new Date(dataInicial);
 }
 
-const res = calcDif(d1, d2);
-console.log(res);
+const respostaDiferencaDeDias = calcularDiferencaDeDias(dataInicial, dataFinal);
+console.log(respostaDiferencaDeDias);
