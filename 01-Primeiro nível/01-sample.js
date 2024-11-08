@@ -1,13 +1,22 @@
-function h(a) {
-    let b = [];
-    for (let i = 0; i < a.length; i++) {
-        if (a[i] % 2 === 0) {
-            b.push(a[i]);
+function criarVetorNumerosInteirosPares(vetor) {
+    const vetorNumerosPares = [];
+    const numeroDivisor = 2;
+    for (let i = 0; i < vetor.length; i++) {
+        if (vetor[i] % numeroDivisor === 0) {
+            vetorNumerosPares.push(vetor[i]);
         }
     }
-    return b;
+    return vetorNumerosPares;
 }
 
-let x = [1, 2, 3, 4, 5, 6];
-let y = h(x);
-console.log(y);
+var numero1 = 1;
+var numero2 = 2;
+var numero3 = 3;
+var numero4 = 4;
+var numero5 = 5;
+var numero6 = 6;
+const vetorNumerosInteiros = [numero1, numero2, numero3, numero4, numero5, numero6];
+const vetorNumerosParesCriados = criarVetorNumerosInteirosPares(vetorNumerosInteiros);
+console.log(vetorNumerosParesCriados);
+
+criarVetorNumerosInteirosPares(vetorNumerosInteiros);
