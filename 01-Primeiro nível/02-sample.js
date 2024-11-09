@@ -1,6 +1,6 @@
 const valorBoolean = true;
 
-function verAc(informacoesDeLoginDoUsuario) {
+function verAcesso(informacoesDeLoginDoUsuario) {
     if (valorBoolean && informacoesDeLoginDoUsuario.isAdmin) {
         console.log("Acesso permitido ao administrador.");
     } else {
@@ -9,4 +9,4 @@ function verAc(informacoesDeLoginDoUsuario) {
 }
 
 const informacoesDeLoginDoUsuario = { nome: "João", admin: true };
-verAc(informacoesDeLoginDoUsuario);
+verAcesso(informacoesDeLoginDoUsuario);
