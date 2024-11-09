@@ -190,3 +190,4 @@ console.log("Resultado do cálculo:", calculadoraReversa(operacao, valor1, valor
 const id = 5;
 console.log("Resultado do processamento de dados:", processarDados(id));
 console.log("Resultado da função:", multiplicarItens());
+

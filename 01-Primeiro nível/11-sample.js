@@ -151,3 +151,4 @@ const userNumber3 = 3;
 console.log(mostRecentlyLoggedIn(users[userNumber0], users[userNumber3]));
 
 recentlyCreated(users[userNumber3]);
+
