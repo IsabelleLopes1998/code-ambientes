@@ -1,9 +1,27 @@
 async function buscarPlaneta() {
-    const resposta = await fetch("https://swapi.dev/api/planets/1/");
-    const planeta = await resposta.json();
-    console.log(planeta.name);
+    try {
+        const planeta = await obterDadosPlaneta();
+        exibirNomePlaneta(planeta.name);
+    } catch (erro) {
+        console.error("Erro:", erro);
+    }
+}
 
-    exibirNomePlaneta(planeta.name);
+async function obterDadosPlaneta() {
+    const resposta = await fetch("https://swapi.dev/api/planets/1/");
+    verificarResposta(resposta);
+    return resposta.json();
+}
+
+function verificarResposta(resposta) {
+    if (!resposta.ok) {
+        throw new Error(`Erro ao buscar planeta: ${resposta.statusText}`);
+    }
+}
+
+
+function exibirNomePlaneta(nomePlaneta) {
+    console.log(nomePlaneta);
 }
 
 buscarPlaneta();
