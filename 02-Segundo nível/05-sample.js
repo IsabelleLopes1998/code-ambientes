@@ -1,6 +1,31 @@
 function calcularSalarioFuncionario(horasTrabalhadas, valorHora, cargo) {
     const salarioBase = horasTrabalhadas * valorHora;
 
+    const salarioComBonus = salarioBonus(salarioBase, cargo);
+    const salarioComDesconto = salarioComDesconto300Reais(salarioComBonus);
+    return calcularComDecontoDoImposto(salarioComDesconto);  
+}
+
+function calcularComDecontoDoImposto(salarioComDesconto){
+    let salarioFinal;
+    const salarioMaximo = 5000;
+    const salarioMedio = 3000;
+    const descontoSalarioMaximo = 0.27;
+    const descontoSalarioMedio = 0.18;
+    const descontoSalarioBase = 0.11;
+
+    if (salarioComDesconto > salarioMaximo) {
+        salarioFinal = salarioComDesconto - (salarioComDesconto * descontoSalarioMaximo);
+    } else if (salarioComDesconto > salarioMedio) {
+        salarioFinal = salarioComDesconto - (salarioComDesconto * descontoSalarioMedio);
+    } else {
+        salarioFinal = salarioComDesconto - (salarioComDesconto * descontoSalarioBase );
+    }
+
+    return salarioFinal;
+}
+
+function salarioBonus(salarioBase,cargo){
     let salarioComBonus;
     if (cargo === "gerente") {
         const bonusGerente = 1000;
@@ -12,28 +37,14 @@ function calcularSalarioFuncionario(horasTrabalhadas, valorHora, cargo) {
         const bonusbase = 200;
         salarioComBonus = salarioBase + bonusbase;
     }
-    const descontoSalario = 300;
-    const salarioComDesconto = salarioComBonus - descontoSalario;
-    
-    calcularComDecontoDoImposto(salarioComDesconto);   
+    return salarioComBonus;
 }
 
-function calcularComDecontoDoImposto(salarioComDesconto){
-    let salarioFinal;
-    const salarioMaximo = 5000;
-    const salarioMedio = 3000;
-    const descontoSalarioMaximo = 0.27;
-    const descontoSalarioMedio = 0.18;
-    const descontoSalarioBase = 0.11;
-    if (salarioComDesconto > salarioMaximo) {
-        salarioFinal = salarioComDesconto - (salarioComDesconto * descontoSalarioMaximo);
-    } else if (salarioComDesconto > salarioMedio) {
-        salarioFinal = salarioComDesconto - (salarioComDesconto * descontoSalarioMedio);
-    } else {
-        salarioFinal = salarioComDesconto - (salarioComDesconto * descontoSalarioBase );
-    }
+function salarioComDesconto300Reais(salarioComBonus){
+    const descontoSalario = 300;
+    const salarioComDesconto = salarioComBonus - descontoSalario;
 
-    return salarioFinal;
+    return salarioComDesconto;
 }
 
 const horasTrabalhadas = 160;

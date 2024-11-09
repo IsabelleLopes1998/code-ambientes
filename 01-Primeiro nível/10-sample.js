@@ -4,7 +4,7 @@ const usuarioObjeto = {
 };
 
 function exibirUsuario(usuarioObjeto) {
-    console.log(`${usuarioObjeto.nome  } tem ${  usuarioObjeto.idade  } anos.`);
+    console.log(`${usuarioObjeto.nome} tem ${  usuarioObjeto.idade} anos.`);
 }
 
 exibirUsuario(usuarioObjeto);

@@ -1,25 +1,45 @@
 async function buscarVeiculosECalcularCusto() {
     try {
-        const resposta = await fetch("https://swapi.dev/api/vehicles/");
-        const dados = await resposta.json();
-        const custo = 1000;
-        const veiculosCaros = dados.results.filter(veiculo => parseInt(veiculo.cost_in_credits) > custo);
+        const veiculos = await obterDadosVeiculos();
+        const custoLimite = 10000;
+        const veiculosCaros = filtrarVeiculosPorCusto(veiculos, custoLimite);
 
-        console.log("Veículos caros (mais de 10.000 créditos):");
-        veiculosCaros.forEach(veiculo => {
-            console.log(`- ${veiculo.name}: ${veiculo.cost_in_credits} créditos`);
-        });
+        exibirVeiculosCaros(veiculosCaros, custoLimite);
 
-        const custoTotal = veiculosCaros.reduce((total, veiculo) => {
-            return total + parseInt(veiculo.cost_in_credits);
-        }, 0);
-
-        console.log(`Custo total dos veículos caros: ${custoTotal} créditos`);
+        const custoTotal = calcularCustoTotal(veiculosCaros);
+        exibirCustoTotal(custoTotal);
 
     } catch (erro) {
         console.error("Erro ao buscar veículos:", erro);
     }
 }
 
-buscarVeiculosECalcularCusto();
+async function obterDadosVeiculos() {
+    const resposta = await fetch("https://swapi.dev/api/vehicles/");
+    if (!resposta.ok) {
+        throw new Error("Erro ao buscar dados dos veículos.");
+    }
+    const dados = await resposta.json();
+    return dados.results;
+}
 
+function filtrarVeiculosPorCusto(veiculos, custo) {
+    return veiculos.filter(veiculo => parseInt(veiculo.cost_in_credits) > custo);
+}
+
+function calcularCustoTotal(veiculos) {
+    return veiculos.reduce((total, veiculo) => total + parseInt(veiculo.cost_in_credits), 0);
+}
+
+function exibirVeiculosCaros(veiculos, custoLimite) {
+    console.log(`Veículos caros (mais de ${custoLimite} créditos):`);
+    veiculos.forEach(veiculo => {
+        console.log(`- ${veiculo.name}: ${veiculo.cost_in_credits} créditos`);
+    });
+}
+
+function exibirCustoTotal(custoTotal) {
+    console.log(`Custo total dos veículos caros: ${custoTotal} créditos`);
+}
+
+buscarVeiculosECalcularCusto();

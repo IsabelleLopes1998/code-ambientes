@@ -183,7 +183,11 @@ principal();
 const operacao = 1;
 const valor1 = 2;
 const valor2 = 3;
-console.log("Resultado do cálculo:", calculadoraReversa(operacao, valor1, valor2));
+try{
+    console.log("Resultado do cálculo:", calculadoraReversa(operacao, valor1, valor2));
+}catch(erro){
+    console.error(erro);
+}
 const id = 5;
 console.log("Resultado do processamento de dados:", processarDados(id));
 console.log("Resultado da função:", multiplicarItens());

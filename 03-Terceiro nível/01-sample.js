@@ -1,25 +1,38 @@
 async function buscarEDetalharNave() {
     try {
-        const resposta = await fetch("https://swapi.dev/api/starships/9/");
-        const nave = await resposta.json();
-
-        const detalhesNave = `
-        Nome: ${nave.name}
-        Modelo: ${nave.model}
-        Fabricante: ${nave.manufacturer}
-        `;
-
-        console.log("Detalhes da Nave:");
-        console.log(detalhesNave);
+        const nave = await obterDadosNave();
+        const detalhesNave = formatarDetalhesNave(nave);
+        
+        exibirDetalhesNave(detalhesNave);
 
         const tamanhoTripulacao = parseInt(nave.crew);
         const tamanhoMaximoDaTripulacao = 1000;
-
         verificarTamanhoNave(tamanhoTripulacao, tamanhoMaximoDaTripulacao);
 
     } catch (erro) {
         console.error("Erro ao buscar detalhes da nave:", erro);
     }
+}
+
+async function obterDadosNave() {
+    const resposta = await fetch("https://swapi.dev/api/starships/9/");
+    if (!resposta.ok) {
+        throw new Error("Erro ao buscar dados da nave.");
+    }
+    return resposta.json();
+}
+
+function formatarDetalhesNave(nave) {
+    return `
+        Nome: ${nave.name}
+        Modelo: ${nave.model}
+        Fabricante: ${nave.manufacturer}
+    `;
+}
+
+function exibirDetalhesNave(detalhes) {
+    console.log("Detalhes da Nave:");
+    console.log(detalhes);
 }
 
 function verificarTamanhoNave(tamanhoTripulacao, tamanhoMaximoDaTripulacao) {

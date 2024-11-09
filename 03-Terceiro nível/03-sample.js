@@ -1,16 +1,9 @@
 async function buscarEDetalharPlaneta(idPlaneta) {
     try {
-        const resposta = await fetch(`https://swapi.dev/api/planets/${idPlaneta}/`);
-        const planeta = await resposta.json();
+        const planeta = await obterDadosPlaneta(idPlaneta);
+        const detalhesPlaneta = formatarDetalhesPlaneta(planeta);
 
-        const detalhesPlaneta = `
-        Nome: ${planeta.name}
-        Clima: ${planeta.climate}
-        População: ${planeta.population}
-        `;
-
-        console.log("Detalhes do Planeta:");
-        console.log(detalhesPlaneta);
+        exibirDetalhesPlaneta(detalhesPlaneta);
 
         const populacaoTotal = 100000;
         const populacao = parseInt(planeta.population);
@@ -22,6 +15,31 @@ async function buscarEDetalharPlaneta(idPlaneta) {
     }
 }
 
+// Função para obter os dados do planeta a partir da API
+async function obterDadosPlaneta(idPlaneta) {
+    const resposta = await fetch(`https://swapi.dev/api/planets/${idPlaneta}/`);
+    if (!resposta.ok) {
+        throw new Error("Erro ao buscar dados do planeta.");
+    }
+    return resposta.json();
+}
+
+// Função para formatar os detalhes do planeta em uma string
+function formatarDetalhesPlaneta(planeta) {
+    return `
+        Nome: ${planeta.name}
+        Clima: ${planeta.climate}
+        População: ${planeta.population}
+    `;
+}
+
+// Função para exibir os detalhes do planeta no console
+function exibirDetalhesPlaneta(detalhes) {
+    console.log("Detalhes do Planeta:");
+    console.log(detalhes);
+}
+
+// Função para verificar a população e exibir uma mensagem apropriada
 function verificarPopulacao(populacao, populacaoTotal) {
     if (populacao > populacaoTotal) {
         console.log("Este planeta é muito populado.");

@@ -29,17 +29,16 @@ class User {
 
 // Deixe a função clara para que seja possível de compreender que ela verifica o número de usuários com a role de admin
 function numberOfAdmins(users) {
-    let c = 0;
+    let contador = 0;
     for (let i = 0; i < users.length; i++) {
-        if (users[i].c === "admin") {
-            c++;
+        if (users[i].role === "admin") {
+            contador++;
         }
     }
-    return c;
+    return contador;
 }
 
-// Deixe a função clara para que seja possível de compreender 
-// que ela verifica se o número de tentativas de login é excessivo
+
 function checkLoginAttemptNumber(user, maximumLoginAttempts) {
     if (user.currentLoginAttempts > maximumLoginAttempts) {
         console.log("Tentativas de login excessivas.");
@@ -48,15 +47,14 @@ function checkLoginAttemptNumber(user, maximumLoginAttempts) {
     }
 }
 
-function mostRecentlyLoggedIn(u1, u2) {
-    if (u1.lastLogin > u2.lastLogin) {
-        return `${u1.name} logou mais recentemente.`;
+function mostRecentlyLoggedIn(usuario1, usuario2) {
+    if (usuario1.lastLogin > usuario2.lastLogin) {
+        return `${usuario1.name} logou mais recentemente.`;
     } else {
-        return `${u2.name} logou mais recentemente.`;
+        return `${usuario2.name} logou mais recentemente.`;
     }
 }
 
-// Deixe a função clara para que seja possível de compreender que ela verifica se o usuário foi criado recentemente
 function recentlyCreated(user) {
     const now = new Date();
     const maxTime = 31536000000;
