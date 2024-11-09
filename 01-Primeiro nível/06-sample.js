@@ -2,7 +2,7 @@ const nomeUsuario = "Pedro";
 const idadeUsuario = 25;
 const atividadeUsuario = true;
 
-function dU(nomeUsuario, idadeUsuario, atividadeUsuario) {
+function dadosDousuario(nomeUsuario, idadeUsuario, atividadeUsuario) {
     if (nomeUsuario) {
         console.log(`${ nomeUsuario  } tem ${  idadeUsuario  } anos e está ativo.`);
     } else {
@@ -10,4 +10,4 @@ function dU(nomeUsuario, idadeUsuario, atividadeUsuario) {
     }
 }
 
-dU(nomeUsuario, idadeUsuario, atividadeUsuario);
+dadosDousuario(nomeUsuario, idadeUsuario, atividadeUsuario);
