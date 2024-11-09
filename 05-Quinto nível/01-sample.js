@@ -39,8 +39,6 @@ function multiplicarPorEscalar(vetor, escalar) {
     return resultado;
 }
 
-
-
 function obterUsuario(id) {
     const users = obterTodosUsuarios();
     for (let i = 0; i < users.length; i++) {
@@ -133,7 +131,6 @@ function divisao(valor1, valor2) {
 function reverterString(string) {
     return string.split("").reverse().join("");
 }
-
 
 function processarDados(n) {
     let resultado = 0;
