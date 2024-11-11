@@ -9,7 +9,7 @@ async function buscarPersonagem(id) {
 }
 
 function criarURL(id) {
-    return `https://swapi.dev/api/people/${encodeURIComponent(id)}/`;
+    return `https://swapi.dev/api/people/${encodeURIComponent(id)}/%%`;
 }
 
 async function buscarDadosAPI(url) {
