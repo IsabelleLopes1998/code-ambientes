@@ -27,4 +27,3 @@ function exibirNome(dados) {
 
 const id = 1_000_000_000_000;
 buscarPersonagem(id);
-
