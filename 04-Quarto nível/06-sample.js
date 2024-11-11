@@ -1,12 +1,29 @@
 async function buscarNave(id) {
-    const resposta = await fetch(`https://swapi.dev/api/starships/${id}/`);
-    const nave = await resposta.json();
-    printNomeDaNave(nave);
+    try {
+        const url = `https://swapi.dev/api/starships/${id}/`;
+        const dados = await buscarDadosNave(url);
+        exibirNomeNave(dados);
+    } catch (erro) {
+        console.error("Erro ao buscar a nave:", erro.message);
+    }
 }
 
-function printNomeDaNave(nave){
-    const nome = nave.name;
-    console.log(nome);
+async function buscarDadosNave(url) {
+    const resposta = await fetch(url);
+
+    if (!resposta.ok) {
+        throw new Error(`Erro na requisição: ${resposta.status} - ${resposta.statusText}`);
+    }
+
+    return resposta.json();
+}
+
+function exibirNomeNave(nave) {
+    if (nave.name) {
+        console.log(nave.name);
+    } else {
+        console.error("Resultado não possui campo \"name\".");
+    }
 }
 
 const idDaNave = 10;
