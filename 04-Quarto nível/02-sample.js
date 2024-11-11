@@ -10,4 +10,3 @@ function printarNomeDoFIlme(filme){
 }
 
 buscarFilme();
-hthththth
