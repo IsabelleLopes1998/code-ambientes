@@ -27,4 +27,3 @@ function exibirEspecie(especie) {
 }
 
 buscarEspecie();
-vdvdvdv
