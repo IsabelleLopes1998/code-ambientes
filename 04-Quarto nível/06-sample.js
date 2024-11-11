@@ -28,4 +28,3 @@ function exibirNomeNave(nave) {
 
 const idDaNave = 10;
 buscarNave(idDaNave);
-
