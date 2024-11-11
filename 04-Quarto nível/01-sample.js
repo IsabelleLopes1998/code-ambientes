@@ -25,4 +25,3 @@ function exibirNomePlaneta(nomePlaneta) {
 }
 
 buscarPlaneta();
-vevrrbrbr
