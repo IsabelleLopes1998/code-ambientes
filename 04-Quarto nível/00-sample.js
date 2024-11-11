@@ -52,3 +52,4 @@ function mostrarResultado(personagem) {
 }
 
 buscarPersonagem();
+fefejejgbjrbg
