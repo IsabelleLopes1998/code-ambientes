@@ -16,7 +16,7 @@ function converterParaObjeto(dadosJSON) {
     try {
         return JSON.parse(dadosJSON);
     } catch (erro) {
-        throw new Error("JSON inválido: " + erro.message);  // Corrigido aqui
+        throw new Error(`JSON inválido: ${erro.message}`);
     }
 }
 
